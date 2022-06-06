@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4067ba1c49cdd624aab97c9123ce0066, type: 3}
+  m_Name: Flow
+  m_EditorClassIdentifier: 
+  MoistureCost: 2
+  NZL: 2
+  Attack: {fileID: 8743138829055973996, guid: bd2c10693f9d2794cb69b854d52dc601, type: 3}
+  Unlocked: 1
+  Sprite: {fileID: 21300000, guid: 4a30180ac7e42ee47931a1c1bc5c90b6, type: 3}
