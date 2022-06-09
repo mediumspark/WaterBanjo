@@ -15,6 +15,9 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     float gravity, GroundedOffset;
+    [SerializeField]
+    GameObject GroundPoint; 
+
 
     private LayerMask GroundLayers;
 
@@ -59,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void GroundCheck()
     {
-        Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
+        Vector3 spherePosition = new Vector3(GroundPoint.transform.position.x, GroundPoint.transform.position.y - GroundedOffset, GroundPoint.transform.position.z);
         _isGrounded = Physics.CheckSphere(spherePosition, GroundedOffset, GroundLayers); 
     }
 
@@ -161,6 +164,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedOffset);
+        Gizmos.DrawWireSphere(new Vector3(GroundPoint.transform.position.x, GroundPoint.transform.position.y - GroundedOffset, GroundPoint.transform.position.z), GroundedOffset);
     }
 }
