@@ -11,6 +11,9 @@ public class PlayerAnimations : MonoBehaviour
         Animator = GetComponent<Animator>(); 
     }
 
+
+
+
     public void AniMovingSpeed(float MoveSpeed)
     {
         Animator.SetFloat("Moving", MoveSpeed);

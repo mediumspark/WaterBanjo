@@ -17,8 +17,6 @@ MonoBehaviour:
   Nozzles:
   - {fileID: 11400000, guid: 80450a64ce9915e4c8617da15ab52fee, type: 2}
   - {fileID: 11400000, guid: d652bbec7d8790f48b1cbee1146910eb, type: 2}
-  - {fileID: 11400000, guid: 920f837727d9c724d8a754ab77d45f2c, type: 2}
-  - {fileID: 11400000, guid: e6a980b1f933eca4c86f02247b83ecc0, type: 2}
   Coins: 0
   TotalCoins: 0
   InScene: Tutorial Level

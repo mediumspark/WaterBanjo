@@ -1,10 +1,24 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
 
 public class Player : ScriptableObject
 {
-    public float MoistureLevel, MoistureMax; 
+    [SerializeField]
+    private float _moistureLevel;
+    public float MoistureMax;
+    
+    public float MoistureLevel 
+    {
+        get { return _moistureLevel; } 
+        set 
+            {
+            _moistureLevel = value; 
+            Hydro.HydroLevel.transform.localScale = new Vector3(Hydro.HydroLevel.transform.localScale.x,
+   (_moistureLevel / MoistureMax) * 1.2f % 1.21f, Hydro.HydroLevel.transform.localScale.z);
+        }
+    }
+
     public List<Nozzle> Nozzles;
     public int Coins, TotalCoins;
 
@@ -20,7 +34,7 @@ public class Player : ScriptableObject
 
     public void AddMoisture(float AddedWater)
     {
-        if(MoistureLevel + AddedWater <= MoistureMax)
+        if(_moistureLevel + AddedWater <= MoistureMax)
         {
             MoistureLevel += AddedWater; 
         }
@@ -49,6 +63,4 @@ public class Player : ScriptableObject
         Nozzles[0].Unlocked = true; 
         Nozzles[1].Unlocked = true; 
     }
-
-
 }

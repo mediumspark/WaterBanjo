@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Collections; 
+
+/// <summary>
+/// Collectable to adds to the players water meter
+/// </summary>
 public class Moisture : MonoBehaviour, ICollectable
 {
     public int MoistureGain = 5; 

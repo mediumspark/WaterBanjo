@@ -14,6 +14,10 @@ public interface ICollectable
 
 public class Hydro : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject _hydroLevel; 
+    public static GameObject HydroLevel; 
+    
     public List<Nozzle> Nozzles;
     private int NozzleIndex = 0;
     public bool NozzleOn { get; set; }
@@ -28,7 +32,8 @@ public class Hydro : MonoBehaviour
     private void Awake()
     {
         Nozzles = PlayerScriptableReference.PlayerSO.Nozzles;
-        PlayerControls.PlayerHydro = this; 
+        PlayerControls.PlayerHydro = this;
+        HydroLevel = _hydroLevel; 
     }
 
     private void Update()

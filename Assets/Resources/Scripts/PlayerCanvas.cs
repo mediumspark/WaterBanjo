@@ -12,7 +12,6 @@ public class PlayerCanvas : MonoBehaviour
     public Image WaterSlider, NozzleType;
     public TextMeshProUGUI Coins;
 
-    private static Image _MoistureSlider;
     private static TextMeshProUGUI _CoinText;
     private static Image _NozzleType;
 
@@ -20,7 +19,6 @@ public class PlayerCanvas : MonoBehaviour
     private void Awake()
     {
         _PlayerSave = PlayerScriptableReference.PlayerSO;
-        _MoistureSlider = WaterSlider;
         _CoinText = Coins;
         _NozzleType = NozzleType;
 
@@ -32,13 +30,7 @@ public class PlayerCanvas : MonoBehaviour
     public static void UpdateUI()
     {
         UpdateCoinText();
-        UpdateMoistureSlider();
         UpdateNozzelImage(); 
-    }
-
-    private static void UpdateMoistureSlider()
-    {
-        _MoistureSlider.color = new Color(_MoistureSlider.color.r, _MoistureSlider.color.b, _MoistureSlider.color.g, _PlayerSave.MoistureLevel / _PlayerSave.MoistureMax);
     }
 
     private static void UpdateCoinText()
