@@ -46,6 +46,18 @@ public class PlayerControls : MonoBehaviour
         //Inputs.Action.Pause.started += ctx => PuaseMenu.PauseGame();
     }
 
+    public static void TeleportPlayer(Vector3 position)
+    {
+        PlayerMovement.GetComponent<CharacterController>().enabled = false;
+        PlayerMovement.transform.position = position;
+        PlayerMovement.GetComponent<CharacterController>().enabled = true;
+    }
+
+    public static void TeleportPlayer(Transform position)
+    {
+        TeleportPlayer(position.position); 
+    }
+
     private void OnEnable() => Inputs.Enable();
 
     private void OnDisable() => Inputs.Disable();

@@ -25,6 +25,7 @@ public class WaterInteractableBehavior : MonoBehaviour
 /// <summary>
 /// Wells can be filled with water if not full and if the player 
 /// interacts with them when they are full they can gain a large amount of water back
+/// Wells also act as respawn areas when you die if you interact with them
 /// </summary>
 public class Well : WaterInteractableBehavior, IInteractable
 {
@@ -45,5 +46,20 @@ public class Well : WaterInteractableBehavior, IInteractable
         {
             PlayerScriptableReference.PlayerSO.AddMoisture(WaterCapacity);
         }
+
+        //Location of Well
+        PlayerScriptableReference.PlayerSO.RespawnPosition = SetRespawnArea().Item2;
+
+        //Scene of Well
+        PlayerScriptableReference.PlayerSO.RespawnScene = SetRespawnArea().Item1; 
+
+    }
+
+    private Tuple<string,Vector3> SetRespawnArea()
+    {
+        string currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        Vector3 RespawnLocation = transform.position + Vector3.forward * 1.5f;
+
+        return Tuple.Create(currentScene, RespawnLocation);
     }
 }

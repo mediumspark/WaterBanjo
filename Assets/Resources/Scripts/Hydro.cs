@@ -83,8 +83,8 @@ public class Hydro : MonoBehaviour
         PlayerCanvas.UpdateUI();
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(SpurtNozzleLaunchPoint.transform.position, 0.25f);
-    }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos() => Gizmos.DrawWireSphere(SpurtNozzleLaunchPoint.transform.position, 0.25f);
+#endif
 }

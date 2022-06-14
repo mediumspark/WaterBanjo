@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections; 
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,31 +7,65 @@ public class Player : ScriptableObject
 {
     [SerializeField]
     private float _moistureLevel;
-    public float MoistureMax;
-    
-    public float MoistureLevel 
+    public float MoistureLevel
     {
-        get { return _moistureLevel; } 
-        set 
-            {
-            _moistureLevel = value; 
+        get { return _moistureLevel; }
+        set
+        {
+            _moistureLevel = value;
             Hydro.HydroLevel.transform.localScale = new Vector3(Hydro.HydroLevel.transform.localScale.x,
-   (_moistureLevel / MoistureMax) * 1.2f % 1.21f, Hydro.HydroLevel.transform.localScale.z);
+                (_moistureLevel / MoistureMax) * 1.2f % 1.21f, Hydro.HydroLevel.transform.localScale.z);
         }
     }
+    public float MoistureMax;
+
+    [SerializeField]
+    private string InScene;
+    public string CurrentScene { get => InScene; set => InScene = value; }
+
+    [SerializeField]
+    private Vector3 LocationInScene = Vector3.zero;
+    public Vector3 PositioninScene { get => LocationInScene; set => LocationInScene = value; }
+
 
     public List<Nozzle> Nozzles;
     public int Coins, TotalCoins;
 
-    [SerializeField]
-    private string InScene;
+    public string RespawnScene;
+    public Vector3 RespawnPosition;
 
-    public string CurrentScene { get => InScene; set => InScene =value; }
+    private bool Dead = false; 
 
-    [SerializeField]
-    private Vector3 LocationInScene = Vector3.zero; 
 
-    public Vector3 PositioninScene { get => LocationInScene; set => LocationInScene = value; }
+    public IEnumerator OnDeath()
+    {
+        if (!Dead)
+        {
+            Dead = true; 
+            //Fade to black Transition
+            yield return new WaitForSeconds(0.5f);
+
+            //Load respawn scene
+            SceneManager.LoadScene(RespawnScene);
+
+            yield return new WaitForSeconds(1.5f);
+            //Move Player to Spawn
+            PlayerControls.TeleportPlayer(RespawnPosition);
+            //Reset Player Stats
+            Refresh();
+
+            //Fade from Black
+            yield return new WaitForSeconds(0.5f);
+            Dead = false; 
+        }
+    }
+
+
+    public void Refresh()
+    {
+        MoistureLevel = MoistureMax; 
+        //Using this until I can decide whether or not I'll add a more robust health system
+    }
 
     public void AddMoisture(float AddedWater)
     {
@@ -43,7 +78,6 @@ public class Player : ScriptableObject
             MoistureLevel = MoistureMax;
         }
         PlayerCanvas.UpdateUI();
-
     }
 
     public void Reset()

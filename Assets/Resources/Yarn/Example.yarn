@@ -1,0 +1,13 @@
+﻿title: Start
+tags: 
+position: 398,302
+---
+Text: Hello World
+(8) This is me! (8)
+ <<jump HelloPartTwo>>
+===
+title: HelloPartTwo
+tags: 
+---
+Player: LETS GET GOIN
+===

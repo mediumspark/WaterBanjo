@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moistureLevel: 10
   MoistureMax: 50
+  InScene: Tutorial Level
+  LocationInScene: {x: 19.799526, y: 4.441375, z: 57.029617}
   Nozzles:
   - {fileID: 11400000, guid: 80450a64ce9915e4c8617da15ab52fee, type: 2}
   - {fileID: 11400000, guid: d652bbec7d8790f48b1cbee1146910eb, type: 2}
   Coins: 0
   TotalCoins: 0
-  InScene: Tutorial Level
-  LocationInScene: {x: 15.877819, y: 4.4413767, z: 129.3238}
+  RespawnScene: Tutorial Level
+  RespawnPosition: {x: 17.36, y: 15.994, z: 31.574}

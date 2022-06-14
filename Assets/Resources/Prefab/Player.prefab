@@ -7264,7 +7264,7 @@ MonoBehaviour:
   GroundPoint: {fileID: 7947438538119962342}
   MoveDirection: {x: 0, y: 0, z: 0}
   JumpTimer: 0
-  JumpForce: 15
+  JumpForce: 5
 --- !u!143 &7947438538547311248
 CharacterController:
   m_ObjectHideFlags: 0
@@ -7346,7 +7346,7 @@ MonoBehaviour:
   InteractRange: 1
   InteractableLayers:
     serializedVersion: 2
-    m_Bits: 98304
+    m_Bits: 884736
 --- !u!1 &7947438538663967752
 GameObject:
   m_ObjectHideFlags: 3

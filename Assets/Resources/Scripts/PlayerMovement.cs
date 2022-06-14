@@ -78,6 +78,14 @@ public class PlayerMovement : MonoBehaviour
     private bool _Launching = false;
     public bool Launch { set => _Launching = value;  }
 
+    /// <summary>
+    /// Pass AnimatorController Hurt through Playermovement
+    /// </summary>
+    public void Hurt()
+    {
+        _AnimationController.AniHurt(); 
+    }
+
     public void GravityAndJump()
     {
         if (_isGrounded)

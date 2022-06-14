@@ -6,12 +6,43 @@ public class PlayerInteract : MonoBehaviour
 {
     public float InteractRange;
     public LayerMask InteractableLayers;
+    public LayerMask DamageLayers; 
 
     static Collider[] InteractablesInRange;
+
+    private CharacterController CC; // Cached for use in Collision Check
+
+    private void Awake()
+    {
+        CC = GetComponent<CharacterController>();
+    }
 
     private void Update()
     {
         InteractablesInRange = Physics.OverlapSphere(transform.position, InteractRange, InteractableLayers);
+        bool hit = Physics.CheckSphere(transform.position, CC.radius, DamageLayers);
+        if (hit) PlayerControls.PlayerMovement.Hurt();
+
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        if (other.layer == LayerMask.NameToLayer("Instakill"))
+            StartCoroutine(PlayerScriptableReference.PlayerSO.OnDeath());
+    }
+
+    public void IFrames(int On = 0)
+    {
+        bool IFramesOn = On > 0;
+        if (IFramesOn)
+        {
+            GetComponent<Collider>().enabled = false;
+            PlayerControls.PlayerMovement.Stop(); 
+        }
+        else
+        {
+            GetComponent<Collider>().enabled = true;
+        }
     }
 
     public static void Interact()
@@ -34,5 +65,6 @@ public class PlayerInteract : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, InteractRange);
+        Gizmos.DrawWireSphere(transform.position, CC.radius);
     }
 }

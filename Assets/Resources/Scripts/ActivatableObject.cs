@@ -10,15 +10,21 @@ public class ActivatableObject : MonoBehaviour, IActivateable
     public void OnActivation()
     {
         Activated = true;
-        try
-        {
-            GetComponentInChildren<Animator>().SetBool("Activated", Activated);
-        }
-        catch { }
+        UpdateActivatedBool(Activated);
     }
 
     public void OnDeactivate()
     {
         Activated = false;
+        UpdateActivatedBool(Activated);
+    }
+
+    public void UpdateActivatedBool(bool isActive)
+    {
+        try
+        {
+            GetComponentInChildren<Animator>().SetBool("Activated", Activated);
+        }
+        catch { }
     }
 }

@@ -4,17 +4,9 @@ using UnityEngine;
 
 public class Pipe : MonoBehaviour, IInteractable
 {
-
-    public void TeleportPlayer()
-    {
-        PlayerControls.PlayerMovement.GetComponent<CharacterController>().enabled = false; 
-        PlayerControls.PlayerMovement.transform.position = transform.GetChild(0).position;
-        PlayerControls.PlayerMovement.GetComponent<CharacterController>().enabled = true;
-    }
-
     public void OnInteract()
     {
-        GetComponentInParent<PipeWork>().TransportPlayerBetweenPipes(transform.parent.GetChild(0).name == name);
+        GetComponentInParent<PipeNetwork>().TransportPlayerBetweenPipes(transform.parent.GetChild(0).name == name);
     }
 
     private void OnDrawGizmos()
