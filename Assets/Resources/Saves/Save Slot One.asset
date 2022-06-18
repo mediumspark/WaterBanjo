@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25df89d376ae4fb4abdcac39ee30f831, type: 3}
   m_Name: Save Slot One
   m_EditorClassIdentifier: 
-  _moistureLevel: 10
+  _moistureLevel: 50
   MoistureMax: 50
-  InScene: Tutorial Level
-  LocationInScene: {x: 19.799526, y: 4.441375, z: 57.029617}
+  InScene: LevelSelector_1
+  LocationInScene: {x: -23.56886, y: 9.711376, z: 88.004684}
   Nozzles:
   - {fileID: 11400000, guid: 80450a64ce9915e4c8617da15ab52fee, type: 2}
   - {fileID: 11400000, guid: d652bbec7d8790f48b1cbee1146910eb, type: 2}
   Coins: 0
   TotalCoins: 0
-  RespawnScene: Tutorial Level
-  RespawnPosition: {x: 17.36, y: 15.994, z: 31.574}
+  RespawnScene: 
+  RespawnPosition: {x: 0, y: 0, z: 0}
+  Dead: 0

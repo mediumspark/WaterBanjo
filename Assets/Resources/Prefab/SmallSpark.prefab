@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1166098254244355005}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.68, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 2.01, z: 0}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 1166098255612738839}
   m_RootOrder: 0
@@ -41,7 +41,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1166098254244355005}
   serializedVersion: 7
   lengthInSec: 1
-  simulationSpeed: 1
+  simulationSpeed: 1.5
   stopAction: 0
   cullingMode: 1
   ringBufferMode: 0
@@ -115,8 +115,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 3
-      minScalar: 2.5
+      scalar: 2.2
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -248,8 +248,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 4
-      minScalar: 2.25
+      scalar: 1.75
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -528,7 +528,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 100
+    maxNumParticles: 75
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -793,7 +793,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 22
+      scalar: 25
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4711,8 +4711,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1166098255538430727}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.94599915, y: 4, z: 1.191}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalPosition: {x: -0.387, y: 3.147, z: 0.864}
+  m_LocalScale: {x: 0.353, y: 0.718, z: 0.346}
   m_Children: []
   m_Father: {fileID: 1166098255612738839}
   m_RootOrder: 1
@@ -4965,8 +4965,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1166098255875548826}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.0359993, y: 4, z: 1.190994}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalPosition: {x: 0.31299996, y: 3.147, z: 0.864}
+  m_LocalScale: {x: 0.353, y: 0.718, z: 0.346}
   m_Children: []
   m_Father: {fileID: 1166098255612738839}
   m_RootOrder: 2
