@@ -5,23 +5,43 @@ using UnityEngine.SceneManagement;
 
 public class PlayerScriptableReference : MonoBehaviour
 {
+
     private Player Player;
     public static Player PlayerSO;
+
     private void Awake()
     {
+        PlayerSO = Player;
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += SceneManager_sceneLoaded;
     }
 
     public void LoadPlayer(int SaveSlot)
     {
+        GetComponentInChildren<Animator>().Play("LevelLoad");
+
         Player = GetComponent<SaveLoadUtility>().LoadSlot(SaveSlot);
         PlayerSO = Player;
         SceneManager.LoadScene(Player.CurrentScene);//Player.CurrentScene.name);
     }
 
+    public void LoadPracticeArena(int SaveSlot)
+    {
+        GetComponentInChildren<Animator>().Play("LevelLoad");
+        Player = GetComponent<SaveLoadUtility>().LoadSlot(SaveSlot);
+        PlayerSO = Player;
+        SceneManager.LoadScene("PracticeArea");
+    }
+
+    public static void PlayLevelLoad()
+    {
+        FindObjectOfType<PlayerScriptableReference>().GetComponentInChildren<Animator>().Play("LevelLoad"); 
+    }
+
     private void SceneManager_sceneLoaded(Scene arg, LoadSceneMode arg0)
     {
+        GetComponentInChildren<Animator>().Play("LevelLoaded");
+
         SavePlace();
         if (arg.buildIndex == 0)
         {

@@ -1,24 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations.Rigging; 
 
 public class PlayerMovement : MonoBehaviour
 {
     private CharacterController _Controller;
     private PlayerAnimations _AnimationController;
+
     private bool _isGrounded, _isLaunching, _isJumping, _isMoving, _isDashing;
 
     public bool Grounded => _isGrounded;
     public bool isMoving { get => _isMoving; set => _isMoving = value; }
     public bool isJumping { set => _isJumping = value; }
-    public bool isDashing { set => _isDashing = value;  }
+    public bool isDashing { set => _isDashing = value; }
     public CharacterController Controller => _Controller; 
 
     [SerializeField]
     float gravity, GroundedOffset;
     [SerializeField]
     GameObject GroundPoint; 
-
 
     private LayerMask GroundLayers;
 
@@ -49,7 +50,6 @@ public class PlayerMovement : MonoBehaviour
         _AnimationController.AniGrounded(_isGrounded);
         _AnimationController.AniMovingSpeed(new Vector2(MoveDirection.x, MoveDirection.z).magnitude);
         _AnimationController.AniVerticleV(VerticleVelocity / 2 -1);
-
     }
 
     private void Awake()
@@ -145,6 +145,7 @@ public class PlayerMovement : MonoBehaviour
         
         //Dashing Movement 
         MovementSpeed = !_isDashing ? 5.0f : 10.5f;
+        _AnimationController.AniDashing(_isDashing); 
         PlayerCanvas.PlayerLocationCacheObject.LocationCache = transform.position; 
         _Controller.Move(MoveDirection * MovementSpeed * Time.deltaTime);
     }

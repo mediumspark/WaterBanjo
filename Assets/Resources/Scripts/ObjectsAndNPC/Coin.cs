@@ -6,6 +6,7 @@ public class Coin : MonoBehaviour, ICollectable
 
     public void OnCollect()
     {
+        FindObjectOfType<LevelScriptableRefference>().CoinCollected(this); 
         PlayerScriptableReference.PlayerSO.Coins++; 
         PlayerScriptableReference.PlayerSO.TotalCoins++;
         PlayerCanvas.UpdateUI(); 

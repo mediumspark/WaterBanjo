@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SaveLoadUtility : MonoBehaviour
 {
     [SerializeField]
-    private Player PlayerSlotOne, PlayerSlotTwo, PlayerSlotThree;
+    private Player PlayerSlotOne, PlayerSlotTwo, PlayerSlotThree, PASaveSlot;
     
     public void NewGame(Player CurrentSlot)
     {
@@ -35,6 +35,8 @@ public class SaveLoadUtility : MonoBehaviour
                 return PlayerSlotTwo;           
             case 3:
                 return PlayerSlotThree;
+            case 0:
+                return PASaveSlot; 
             default:
                 Debug.LogError($"{SaveSlot} is not a valid save slot. Save slots are 1 - 3");
                 return null; 

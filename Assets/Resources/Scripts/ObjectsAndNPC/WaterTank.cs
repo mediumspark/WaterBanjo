@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+
+
 /// <summary>
 /// Activatable Object meant to be filled with water and then activates another activatable when completely full
 /// </summary>
@@ -14,6 +16,9 @@ public class WaterTank : MonoBehaviour, IActivateable
 
     [SerializeField]
     private GameObject _waterLevel;
+
+    public float MaxWaterLevel => _tankGoal;
+    public float CurrentWaterLevel => _currentTank; 
 
 
     public void OnActivation()

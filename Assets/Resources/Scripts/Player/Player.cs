@@ -28,15 +28,23 @@ public class Player : ScriptableObject
     private Vector3 LocationInScene = Vector3.zero;
     public Vector3 PositioninScene { get => LocationInScene; set => LocationInScene = value; }
 
+    [SerializeField]
     private int _TotalHearts; 
     public int Hearts { get => _TotalHearts; 
         set { _TotalHearts = value;
         }//Whenever a new heart is gained or a heart is lost it needs to update the amount of hearts on the UI
     }
 
+    [SerializeField]
     private int _health; //Each heart is two health 
     public int Health { get => _health;
-        set { _health = value; 
+        set {
+            _health = value;
+            try
+            {
+                PlayerCanvas.UpdateHealth();
+            }
+            catch { }
         }//Whenever damage is taken half of the last heart that is not the color of damage needs to be changed to the color that indicates damage
     }
 
@@ -55,7 +63,8 @@ public class Player : ScriptableObject
         if (!Dead)
         {
             Dead = true;
-            PlayerControls.PlayerMovement.GetComponent<PlayerAnimations>().AniHurt(); 
+            PlayerControls.PlayerMovement.GetComponent<PlayerAnimations>().AniHurt();
+            PlayerScriptableReference.PlayLevelLoad(); 
 
             //Fade to black Transition
             yield return new WaitForSeconds(0.15f);
@@ -90,11 +99,7 @@ public class Player : ScriptableObject
     public void TakeDamage(int Damage)
     {
         Health -= Damage; 
-        if (Health > 0)
-        {
-            PlayerControls.PlayerMovement.GetComponent<PlayerAnimations>().AniHurt(); 
-        }
-        else
+        if (Health <= 0)
         {
            PlayerControls.PlayerMovement.StartCoroutine( OnDeath()); 
         }
@@ -105,7 +110,7 @@ public class Player : ScriptableObject
         InScene = SceneManager.GetSceneByBuildIndex(1).name;
 
         MoistureMax = 50.0f;
-        _moistureLevel = MoistureMax;
+        _moistureLevel = 0;
         Coins = 0;
         TotalCoins = 0;
         Dead = false;
@@ -120,6 +125,5 @@ public class Player : ScriptableObject
 
         Nozzles.Add(Resources.Load<Nozzle>("Nozzles/Spurt"));
         Nozzles.Add(Resources.Load<Nozzle>("Nozzles/Dash"));
-
     }
 }

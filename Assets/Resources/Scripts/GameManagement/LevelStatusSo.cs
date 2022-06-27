@@ -8,11 +8,21 @@ using UnityEngine;
 /// How many coins are in the world/How many coins were collected
 /// Location of each of the coins
 /// What wells have been filled 
-/// What enemes were defeated
 /// How many times the player has entered the world 
 /// etc
 /// </summary>
 [CreateAssetMenu(fileName = "New Persistant Level", menuName = "Level", order = 200)]
 public class LevelStatusSo : ScriptableObject
 {
+
+    public List<bool> CollectablesCollected = new List<bool>();
+
+    
+    public List<bool> WellsFilled = new List<bool>();
+
+    public List<bool> TanksFilled = new List<bool>();
+
+
+
+    public float TimesEntered; 
 }

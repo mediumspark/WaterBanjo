@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4067ba1c49cdd624aab97c9123ce0066, type: 3}
-  m_Name: Artillery
+  m_Name: Spurt
   m_EditorClassIdentifier: 
   MoistureCost: 0
   NZL: 0

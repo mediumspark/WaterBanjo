@@ -16,6 +16,11 @@ public class PlayerSOCustomEditor : Editor
         {
             P.MoistureLevel = P.MoistureMax;
         }
+
+        if (GUILayout.Button("Heal"))
+        {
+            P.Health = P.Hearts * 2; 
+        }
     }
 }
 #endif

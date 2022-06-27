@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25df89d376ae4fb4abdcac39ee30f831, type: 3}
+  m_Name: PA
+  m_EditorClassIdentifier: 
+  _moistureLevel: 20
+  MoistureMax: 50
+  InScene: PracticeArea
+  LocationInScene: {x: 0, y: 0, z: 0}
+  _TotalHearts: 4
+  _health: 6
+  Nozzles:
+  - {fileID: 11400000, guid: d652bbec7d8790f48b1cbee1146910eb, type: 2}
+  - {fileID: 11400000, guid: e6a980b1f933eca4c86f02247b83ecc0, type: 2}
+  - {fileID: 11400000, guid: 920f837727d9c724d8a754ab77d45f2c, type: 2}
+  - {fileID: 11400000, guid: 80450a64ce9915e4c8617da15ab52fee, type: 2}
+  Coins: 10
+  TotalCoins: 10
+  RespawnScene: PracticeArea
+  RespawnPosition: {x: -15.07, y: 0.665, z: 68.13}
+  Dead: 0

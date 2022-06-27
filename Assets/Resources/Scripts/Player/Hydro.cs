@@ -1,15 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.UI;
 
 
 public enum NozzleNames { Spurt, Dash, Flow, Launch, Artillery }
-
-public interface ICollectable
-{
-    public void OnCollect(); 
-}
 
 
 public class Hydro : MonoBehaviour
@@ -40,8 +35,8 @@ public class Hydro : MonoBehaviour
 
     private void Update()
     {
-        if (NozzleOn && PlayerScriptableReference.PlayerSO.MoistureLevel > Nozzles[NozzleIndex].MoistureCost 
-            && PlayerScriptableReference.PlayerSO.MoistureLevel > 10)
+        if (NozzleOn && PlayerScriptableReference.PlayerSO.MoistureLevel > Nozzles[NozzleIndex].MoistureCost
+            && PlayerScriptableReference.PlayerSO.MoistureLevel > 0)
         {
             Spray(); 
         }
@@ -68,7 +63,7 @@ public class Hydro : MonoBehaviour
         GameObject go = Instantiate(Nozzles[NozzleIndex].Attack, SpurtNozzleLaunchPoint.transform).gameObject;
         FiredParticles.Add(go);
         float x = PlayerScriptableReference.PlayerSO.MoistureLevel;
-        x = x - Nozzles[NozzleIndex].MoistureCost >= 10 ? x - Nozzles[NozzleIndex].MoistureCost : x;
+        x = x - Nozzles[NozzleIndex].MoistureCost >= 0 ? x - Nozzles[NozzleIndex].MoistureCost : x;
         PlayerScriptableReference.PlayerSO.MoistureLevel = x; 
         PlayerCanvas.UpdateUI();
     }

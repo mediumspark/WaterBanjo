@@ -12,16 +12,20 @@ public class PlayerInteract : MonoBehaviour
 
     private CharacterController CC; // Cached for use in Collision Check
 
+    private PlayerAnimations Animations;
+
     private void Awake()
     {
         CC = GetComponent<CharacterController>();
+        Animations = GetComponent<PlayerAnimations>(); 
     }
 
     private void Update()
     {
         InteractablesInRange = Physics.OverlapSphere(transform.position, InteractRange, InteractableLayers);
         bool hit = Physics.CheckSphere(transform.position, CC.radius + 0.5f, DamageLayers);
-        if (hit) Hurt(1);
+        if (hit)
+            PlayHurt();
 
     }
 
@@ -35,10 +39,13 @@ public class PlayerInteract : MonoBehaviour
     /// Pass AnimatorController Hurt through Playermovement
     /// Player goes invol and is launched back a little bit
     /// </summary>
-    public void Hurt(int damage)
+    public void PlayHurt()
     {
-        IFrames(1); 
-        GetComponent<PlayerAnimations>().AniHurt();
+        Animations.AniHurt();
+    }
+
+    public void TakeDamage(int damage)
+    {
         PlayerScriptableReference.PlayerSO.TakeDamage(damage);
     }
 
@@ -49,9 +56,7 @@ public class PlayerInteract : MonoBehaviour
     public void IFrames(int On = 0)
     {
         bool IFramesOn = On > 0;
-        PlayerControls.PlayerMovement.Stop();
-
-        GetComponent<PlayerAnimations>().Invol(IFramesOn);
+        Animations.Invol(IFramesOn);
     }
 
     public static void Interact()
@@ -68,6 +73,10 @@ public class PlayerInteract : MonoBehaviour
         if(other.TryGetComponent(out ICollectable collectable))
         {
             collectable.OnCollect(); 
+            if(collectable is Coin)
+            {
+                Animations.PlayCoinCollected(); 
+            }
         }
     }
 
