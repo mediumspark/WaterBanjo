@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 599800086002766180}
   - component: {fileID: 1905335811570268666}
   - component: {fileID: 9037620950061568038}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: Water Tank Drain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 6b9ca2abc44746b4ba1bd48d882ddcc7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -374,7 +374,7 @@ GameObject:
   - component: {fileID: 6343434508672726264}
   - component: {fileID: 5078224658109040104}
   - component: {fileID: 6767273947009777906}
-  m_Layer: 16
+  m_Layer: 23
   m_Name: Pipe to WaterTank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2248,7 +2248,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 6b9ca2abc44746b4ba1bd48d882ddcc7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2311,10 +2311,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 560219211005660090}
     m_Modifications:
+    - target: {fileID: 92693749707502678, guid: 728e499a553145442b049d727ea9b9e2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b9ca2abc44746b4ba1bd48d882ddcc7, type: 2}
+    - target: {fileID: 755675165194374172, guid: 728e499a553145442b049d727ea9b9e2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.43240026
+      objectReference: {fileID: 0}
+    - target: {fileID: 755675165194374172, guid: 728e499a553145442b049d727ea9b9e2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.43240026
+      objectReference: {fileID: 0}
+    - target: {fileID: 755675165194374172, guid: 728e499a553145442b049d727ea9b9e2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.55949086
+      objectReference: {fileID: 0}
+    - target: {fileID: 755675165194374172, guid: 728e499a553145442b049d727ea9b9e2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.55949086
+      objectReference: {fileID: 0}
+    - target: {fileID: 755675165194374172, guid: 728e499a553145442b049d727ea9b9e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -14.603
+      objectReference: {fileID: 0}
+    - target: {fileID: 808091643007901450, guid: 728e499a553145442b049d727ea9b9e2, type: 3}
+      propertyPath: _drainPipe
+      value: 
+      objectReference: {fileID: 4144379709480680119}
+    - target: {fileID: 808091643007901450, guid: 728e499a553145442b049d727ea9b9e2, type: 3}
+      propertyPath: _WaterPrefab
+      value: 
+      objectReference: {fileID: 7425315641994483829, guid: 918d0181da1076e448326f6082304ffd, type: 3}
     - target: {fileID: 880149220078334008, guid: 728e499a553145442b049d727ea9b9e2, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1111753690888323095, guid: 728e499a553145442b049d727ea9b9e2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b9ca2abc44746b4ba1bd48d882ddcc7, type: 2}
     - target: {fileID: 4136334714311277097, guid: 728e499a553145442b049d727ea9b9e2, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2367,10 +2403,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7837517231784933205, guid: 728e499a553145442b049d727ea9b9e2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b9ca2abc44746b4ba1bd48d882ddcc7, type: 2}
     - target: {fileID: 8046202904283521469, guid: 728e499a553145442b049d727ea9b9e2, type: 3}
       propertyPath: m_Name
       value: WaterTankPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 8065805288222308429, guid: 728e499a553145442b049d727ea9b9e2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0195
+      objectReference: {fileID: 0}
+    - target: {fileID: 8065805288222308429, guid: 728e499a553145442b049d727ea9b9e2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.0062
+      objectReference: {fileID: 0}
+    - target: {fileID: 8065805288222308429, guid: 728e499a553145442b049d727ea9b9e2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0309
+      objectReference: {fileID: 0}
+    - target: {fileID: 8065805288222308429, guid: 728e499a553145442b049d727ea9b9e2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.993364
+      objectReference: {fileID: 0}
+    - target: {fileID: 8065805288222308429, guid: 728e499a553145442b049d727ea9b9e2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8065805288222308429, guid: 728e499a553145442b049d727ea9b9e2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.11501354
+      objectReference: {fileID: 0}
+    - target: {fileID: 8065805288222308429, guid: 728e499a553145442b049d727ea9b9e2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8065805288222308429, guid: 728e499a553145442b049d727ea9b9e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 13.209
+      objectReference: {fileID: 0}
+    - target: {fileID: 8345561536187844682, guid: 728e499a553145442b049d727ea9b9e2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b9ca2abc44746b4ba1bd48d882ddcc7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 728e499a553145442b049d727ea9b9e2, type: 3}
 --- !u!1 &3942213431963279442 stripped
@@ -2394,3 +2470,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cffb20058fc3164eb4b9830e85634a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4144379709480680119 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6962459130046348120, guid: 728e499a553145442b049d727ea9b9e2, type: 3}
+  m_PrefabInstance: {fileID: 6421100437771436527}
+  m_PrefabAsset: {fileID: 0}

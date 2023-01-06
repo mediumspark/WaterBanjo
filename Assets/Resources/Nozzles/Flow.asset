@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4067ba1c49cdd624aab97c9123ce0066, type: 3}
   m_Name: Flow
   m_EditorClassIdentifier: 
-  MoistureCost: 2
+  MoistureCost: 1
   NZL: 2
-  Attack: {fileID: 8743138829055973996, guid: bd2c10693f9d2794cb69b854d52dc601, type: 3}
+  Attack: {fileID: 8743138829055973996, guid: 2e53289e039ca124ca83afcfa08431f6, type: 3}
   Unlocked: 1
   Sprite: {fileID: 21300000, guid: 4a30180ac7e42ee47931a1c1bc5c90b6, type: 3}

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoistureCost: 1
   NZL: 0
-  Attack: {fileID: 2002974196779355112, guid: 32084bfd0d67fe3498e431b9f3d450f7, type: 3}
+  Attack: {fileID: 2002974196779355112, guid: 605e6b66a113c6541a500606fa802ce0, type: 3}
   Unlocked: 1
   Sprite: {fileID: 21300000, guid: d68db8df157e3094c8c239cc0a3bb274, type: 3}

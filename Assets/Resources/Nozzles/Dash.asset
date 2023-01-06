@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4067ba1c49cdd624aab97c9123ce0066, type: 3}
   m_Name: Dash
   m_EditorClassIdentifier: 
-  MoistureCost: 2
+  MoistureCost: 1
   NZL: 1
   Attack: {fileID: 2888656917542223154, guid: f81ec6ffb7e427e449d0718903711b28, type: 3}
   Unlocked: 1
