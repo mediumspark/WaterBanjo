@@ -13,13 +13,12 @@ public class LevelPipe : MonoBehaviour, IInteractable
 
     private void Awake()
     {
-
         UnlockCheck();
     }
 
     public void LoadLevel(int level)
     {
-        if (PlayerScriptableReference.PlayerSO.Coins >= NumberOfCoinsToUnlock)
+        if (PlayerScriptableReference.Instance.PlayerSO.Coins >= NumberOfCoinsToUnlock)
         {
             FindObjectOfType<SaveLoadUtility>().LoadFromPipe(); 
             SaveLoadUtility.LoadLevel(level);
@@ -28,7 +27,7 @@ public class LevelPipe : MonoBehaviour, IInteractable
 
     private void UnlockCheck()
     {
-        Unlocked = PlayerScriptableReference.PlayerSO.Coins >= NumberOfCoinsToUnlock;
+        Unlocked = PlayerScriptableReference.Instance.PlayerSO.Coins >= NumberOfCoinsToUnlock;
 
         PipeParticles.SetActive(Unlocked);
         ClosedOffPipe.SetActive(!Unlocked);
@@ -38,7 +37,7 @@ public class LevelPipe : MonoBehaviour, IInteractable
     {
         LevelScriptableReference _LSR = FindObjectOfType<LevelScriptableReference>();
 
-        if (_LSR != null && _LSR.IsHubLevel)
+        if (_LSR != null)// && _LSR.IsHubLevel)
             _LSR.SetSpawnInLocation(transform.position + Vector3.forward); 
 
         UnlockCheck();

@@ -39,7 +39,7 @@ public class PlayerInteract : MonoBehaviour
                 InteractablesInRange[0].gameObject.GetComponent<Collider>().ClosestPointOnBounds(Camera.main.transform.position).x,
                 InteractablesInRange[0].gameObject.GetComponent<Collider>().bounds.center.y,
                 InteractablesInRange[0].gameObject.GetComponent<Collider>().ClosestPointOnBounds(Camera.main.transform.position).z
-                ) + Vector3.up * 1.5f;
+                ) + HalfVector.SesquiUp;
         }
         bool hit = Physics.CheckSphere(transform.position, CC.radius + 0.5f, DamageLayers);
         if (hit)
@@ -50,7 +50,7 @@ public class PlayerInteract : MonoBehaviour
     private void OnParticleCollision(GameObject other)
     {
         if (other.layer == LayerMask.NameToLayer("Instakill"))
-            StartCoroutine(PlayerScriptableReference.PlayerSO.OnDeath());
+            StartCoroutine(PlayerScriptableReference.Instance.PlayerSO.OnDeath());
     }
 
     /// <summary>
@@ -64,7 +64,7 @@ public class PlayerInteract : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        PlayerScriptableReference.PlayerSO.TakeDamage(damage);
+        PlayerScriptableReference.Instance.PlayerSO.TakeDamage(damage);
     }
 
     /// <summary>
@@ -83,7 +83,7 @@ public class PlayerInteract : MonoBehaviour
         {
             InteractablesInRange[0].GetComponent<IInteractable>().OnInteract();
         }
-        catch { Debug.LogWarning($"Interactables in Range is empty"); }
+        catch { Debug.LogWarning($"Check Interactable"); }
     }
 
     private void OnTriggerEnter(Collider other)

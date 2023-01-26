@@ -60,14 +60,14 @@ public class Well : WaterInteractableBehavior, IInteractable
     {
         if(WaterInWell >= WaterCapacity)
         {
-            PlayerScriptableReference.PlayerSO.MoistureLevel = PlayerScriptableReference.PlayerSO.MoistureMax; 
+            PlayerScriptableReference.Instance.PlayerSO.MoistureLevel = PlayerScriptableReference.Instance.PlayerSO.MoistureMax; 
         }
 
         //Location of Well
-        PlayerScriptableReference.PlayerSO.RespawnPosition = SetRespawnArea().Item2;
+        PlayerScriptableReference.Instance.PlayerSO.RespawnPosition = SetRespawnArea().Item2;
 
         //Scene of Well
-        PlayerScriptableReference.PlayerSO.RespawnScene = SetRespawnArea().Item1; 
+        PlayerScriptableReference.Instance.PlayerSO.RespawnScene = SetRespawnArea().Item1; 
 
     }
 

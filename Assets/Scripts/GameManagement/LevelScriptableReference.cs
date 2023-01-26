@@ -18,22 +18,8 @@ public class LevelScriptableReference : MonoBehaviour
     List<bool> WellsFilled = new List<bool>();
     [SerializeField]
     List<bool> TanksFilled = new List<bool>();
-
-    public bool IsHubLevel => _levelInfo is HubLevel; 
-    public Vector3 HubSpawnLocation
-    {
-        get
-        {
-            if (IsHubLevel)
-            {
-                HubLevel _hlevelInfo = _levelInfo as HubLevel;
-                return _hlevelInfo.SpawnInLocation;
-            }
-            Debug.LogError("Not Hub Level");
-            return Vector3.zero; 
-        }
-
-    }
+    
+    public Vector3 StartLocation; 
 
     //Cache for the Collectables currently in scene
     Coin[] CoinCache;

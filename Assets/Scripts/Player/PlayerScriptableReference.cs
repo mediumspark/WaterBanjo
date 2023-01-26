@@ -5,30 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class PlayerScriptableReference : MonoBehaviour
 {
+    public static PlayerScriptableReference Instance; 
 
     private Player Player;
-    public static Player PlayerSO;
+    public Player PlayerSO { get => Player; set => Player = value;  }
 
     private void Awake()
     {
-        PlayerSO = Player;
+        Instance = this;
+
         DontDestroyOnLoad(gameObject);
     }
 
     public void LoadPlayer(int SaveSlot)
     {
         GetComponentInChildren<Animator>().Play("LevelLoad");
-
-        Player = GetComponent<SaveLoadUtility>().LoadSlot(SaveSlot);
-        PlayerSO = Player;
+        PlayerSO = GetComponent<SaveLoadUtility>().LoadSlot(SaveSlot);
         SceneManager.LoadScene(Player.CurrentScene);//Player.CurrentScene.name);
     }
 
     public void LoadPracticeArena(int SaveSlot)
     {
         GetComponentInChildren<Animator>().Play("LevelLoad");
-        Player = GetComponent<SaveLoadUtility>().LoadSlot(SaveSlot);
-        PlayerSO = Player;
+        PlayerSO = GetComponent<SaveLoadUtility>().LoadSlot(SaveSlot);
         SceneManager.LoadScene("PracticeArea");
     }
 
@@ -54,7 +53,7 @@ public class PlayerScriptableReference : MonoBehaviour
             }
             catch
             {
-                Debug.LogWarning("Error thrown attempting to save positino of Player");
+                Debug.LogWarning("Error thrown attempting to save position of Player");
             }
         }
     }

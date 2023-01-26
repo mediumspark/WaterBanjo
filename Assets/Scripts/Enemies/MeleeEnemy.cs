@@ -18,10 +18,11 @@ public class MeleeEnemy : Enemy
 
     protected override void PatrolState()
     {
-        AIDest.target = Path.Path.GetChild(PathIndex);
         if (GetComponent<AIPath>().reachedDestination)
         {
-            PathIndex = PathIndex <= Path.Path.childCount ? PathIndex + 1 : 0; 
+            PathIndex = PathIndex < Path.Path.childCount ? PathIndex + 1 : 0; 
         }
+        AIDest.target = Path.Path.GetChild(PathIndex);
+
     }
 }

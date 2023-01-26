@@ -36,9 +36,9 @@ public class PlayerAnimations : MonoBehaviour
 
     [Header("Rigging")]
     [SerializeField]
-    private MultiAimConstraint LeftRrigging;
+    private ChainIKConstraint LeftRrigging;
     [SerializeField]
-    private MultiAimConstraint RightRigging;
+    private ChainIKConstraint RightRigging;
 
     Hydro Hydro; 
 
@@ -69,9 +69,9 @@ public class PlayerAnimations : MonoBehaviour
             FallTimer -= Time.deltaTime;
 
 
-        if (FallTimer <= 0 && !Grounded && !GroundPounding
+/*        if (FallTimer <= 0 && !Grounded && !GroundPounding
             && !PlayerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Collected Coin"))
-            PlayGroundPound();
+            PlayGroundPound();*/
 
     }
 
@@ -103,7 +103,8 @@ public class PlayerAnimations : MonoBehaviour
         PlayerMovement PM = GetComponent<PlayerMovement>(); 
         PlayerControls.TeleportPlayer(PM.GetUpFromLedgePoint);
         //PM.VerticleVelocity = -2;
-        AniOnLedge(false); 
+        AniOnLedge(false);
+        PM.isOnLedge = false;
     }
 
     public void HitLedge()
@@ -182,13 +183,16 @@ public class PlayerAnimations : MonoBehaviour
     public void Spray(bool Spraying)
     {
         if (Spraying)
-        {
-            Hydro.NozzleEffect();    
+        { 
+            Hydro.NozzleEffect();
             SetRiggingWeights(1);
         }
         else
-            SetRiggingWeights(0);
+        {
+            SetRiggingWeights(0.5f);
+        }
 
         PlayerAnimator.SetBool("SprayOn", Spraying);
+
     }
 }

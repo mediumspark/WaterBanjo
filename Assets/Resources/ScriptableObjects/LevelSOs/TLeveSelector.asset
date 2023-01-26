@@ -16,5 +16,5 @@ MonoBehaviour:
   WellsFilled: 00
   TanksFilled: 
   Dialogue: 
-  TimesEntered: 0
+  TimesEntered: 1
   SpawnInLocation: {x: 0, y: 0, z: 0}

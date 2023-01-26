@@ -26,7 +26,7 @@ public class PlayerCanvas : MonoBehaviour
 
     private void Awake()
     {
-        _PlayerSave = PlayerScriptableReference.PlayerSO;
+        _PlayerSave = PlayerScriptableReference.Instance.PlayerSO;
         _CoinText = Coins;
         _NozzleType = NozzleType;
         HPF = HealthPrefab;

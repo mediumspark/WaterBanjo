@@ -16,6 +16,12 @@ public class PlayerControls : MonoBehaviour
         {
             if (Time.timeScale >= 1)
             {
+                if (PlayerMovement.isOnLedge)
+                {
+                    PlayerMovement.GetUpFromLedge();
+                    return;
+                }
+
                 PlayerMovement.isMoving = true;
                 PlayerMovement.GetUpFromLedge();
                 // PlayerMovement.CalculateMovement(ctx.ReadValue<Vector2>());
@@ -43,7 +49,6 @@ public class PlayerControls : MonoBehaviour
 
         Inputs.Movement.Jump.performed += ctx =>
         {
-            PlayerMovement.GetUpFromLedge();
 
             if (!PlayerMovement.Grounded && !PlayerMovement.isOnWall)
             {

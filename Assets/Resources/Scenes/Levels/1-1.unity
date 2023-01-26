@@ -623,6 +623,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 471789499}
+    - target: {fileID: 2942109004128351947, guid: 504a2183617568d47839c3c057cf65b4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6908170a989a4ff408c31837092e24c9, type: 2}
     - target: {fileID: 3915943476700427656, guid: 504a2183617568d47839c3c057cf65b4, type: 3}
       propertyPath: m_Name
       value: Tank Puzzle Setup (1)
@@ -796,7 +800,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh68516
+  m_Name: pb_Mesh162576
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11230,7 +11234,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh68594
+  m_Name: pb_Mesh162662
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12293,6 +12297,7 @@ MonoBehaviour:
   CoinsCollected: 
   WellsFilled: 
   TanksFilled: 
+  SpawnLocation: {x: -3.86, y: 1.02, z: -13.07}
 --- !u!4 &1054763893
 Transform:
   m_ObjectHideFlags: 0
@@ -13122,8 +13127,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &1151170042
-MeshCollider:
+--- !u!65 &1151170042
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -13132,10 +13137,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 88545201}
+  serializedVersion: 2
+  m_Size: {x: 4.94, y: 4.83, z: 4.9400024}
+  m_Center: {x: -2.47, y: 2.415, z: 0}
 --- !u!33 &1151170043
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -17887,7 +17891,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh68756
+  m_Name: pb_Mesh329976
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19027,8 +19031,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &1444098001
-MeshCollider:
+--- !u!65 &1444098001
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -19037,10 +19041,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 818187877}
+  serializedVersion: 2
+  m_Size: {x: 4.94, y: 3, z: 4.94}
+  m_Center: {x: -2.47, y: 1.5, z: 0}
 --- !u!33 &1444098002
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -22762,7 +22765,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-129996
+  m_Name: pb_Mesh-43720
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -23615,31 +23618,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 770984641635528588, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.8968575
       objectReference: {fileID: 0}
     - target: {fileID: 770984641635528588, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.641721
+      value: 2.9431076
       objectReference: {fileID: 0}
     - target: {fileID: 770984641635528588, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.68606
+      value: -1.982769
       objectReference: {fileID: 0}
     - target: {fileID: 770984641635528588, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.979908
+      value: 0.8695694
       objectReference: {fileID: 0}
     - target: {fileID: 770984641635528588, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.19945034
+      value: 0.16216941
       objectReference: {fileID: 0}
     - target: {fileID: 770984641635528588, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000040598515
+      value: -0.45851707
       objectReference: {fileID: 0}
     - target: {fileID: 770984641635528588, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000008262771
+      value: 0.08551063
       objectReference: {fileID: 0}
     - target: {fileID: 1311604117834414632, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_Mesh
@@ -23683,19 +23686,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7947438537584253267, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9964831
+      value: 0.8825494
       objectReference: {fileID: 0}
     - target: {fileID: 7947438537584253267, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.083794326
+      value: 0.059637524
       objectReference: {fileID: 0}
     - target: {fileID: 7947438537584253267, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1e-45
+      value: -0.44008985
       objectReference: {fileID: 0}
     - target: {fileID: 7947438537584253267, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.15450206
       objectReference: {fileID: 0}
     - target: {fileID: 7947438537660380371, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_AnchorMax.y
@@ -23723,11 +23726,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7947438538468690073, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.3780003
+      value: 5.9179997
       objectReference: {fileID: 0}
     - target: {fileID: 7947438538468690073, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.665001
+      value: -5.9017353
       objectReference: {fileID: 0}
     - target: {fileID: 7947438538547311242, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_Name
@@ -23743,7 +23746,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7947438538547311253, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.24
+      value: 1.02
       objectReference: {fileID: 0}
     - target: {fileID: 7947438538547311253, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_LocalPosition.z
@@ -23787,19 +23790,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7947438538663967755, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9978413
+      value: 0.8834874
       objectReference: {fileID: 0}
     - target: {fileID: 7947438538663967755, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.06567186
+      value: 0.043589503
       objectReference: {fileID: 0}
     - target: {fileID: 7947438538663967755, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000039114077
+      value: -0.44282487
       objectReference: {fileID: 0}
     - target: {fileID: 7947438538663967755, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000013654809
+      value: 0.14647901
       objectReference: {fileID: 0}
     - target: {fileID: 7947438538710363712, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_LocalPosition.y
@@ -23811,19 +23814,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7947438538710363712, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9988693
+      value: 0.8841333
       objectReference: {fileID: 0}
     - target: {fileID: 7947438538710363712, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.047541827
+      value: 0.027539603
       objectReference: {fileID: 0}
     - target: {fileID: 7947438538710363712, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1e-45
+      value: -0.44541174
       objectReference: {fileID: 0}
     - target: {fileID: 7947438538710363712, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.13841388
       objectReference: {fileID: 0}
     - target: {fileID: 7947438538762996746, guid: 9cc187f266f5377499c414864ff147ce, type: 3}
       propertyPath: m_AnchorMax.y
@@ -25264,6 +25267,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1979501813}
+    - target: {fileID: 2942109004128351947, guid: 504a2183617568d47839c3c057cf65b4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6908170a989a4ff408c31837092e24c9, type: 2}
     - target: {fileID: 3915943476700427656, guid: 504a2183617568d47839c3c057cf65b4, type: 3}
       propertyPath: m_Name
       value: Tank Puzzle Setup (3)
@@ -26215,8 +26222,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &1966897917
-MeshCollider:
+--- !u!65 &1966897917
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -26225,10 +26232,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1215893725}
+  serializedVersion: 2
+  m_Size: {x: 4.94, y: 3, z: 4.94}
+  m_Center: {x: -2.47, y: 1.5, z: 0}
 --- !u!33 &1966897918
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -26256,7 +26262,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f4770e29e5cb19f44b5f147c077996ce, type: 2}
+  - {fileID: 2100000, guid: d7b9542a6d44ffc47b2796d98d3e1274, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -34784,7 +34790,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 968fcec20967a054686ff70bde994f21, type: 2}
+  - {fileID: 2100000, guid: 6908170a989a4ff408c31837092e24c9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

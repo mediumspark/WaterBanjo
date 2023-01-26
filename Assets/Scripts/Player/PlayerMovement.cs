@@ -83,9 +83,7 @@ public class PlayerMovement : MonoBehaviour
         _MovementSpeedHolder = MovementSpeed;
         GroundLayers = 1 << LayerMask.NameToLayer("Ground");
         PlayerControls.PlayerMovement = this;
-/*
-        gameObject.AddComponent<TesterMovement>();
-        GetComponent<PlayerMovement>().enabled = false; */
+
     }
 
     // Update is called once per frame
@@ -102,8 +100,6 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         GroundCheck();
-        UpdateLedgeDetection();
-       // UpdateWallCheckLocation();
     }
 
     //Needs Update
@@ -111,58 +107,42 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 Direction = new Vector3(MoveDirection.x * 0.1f, 2, MoveDirection.z * 0.1f); 
         ledgeDetectionPoint = _Controller.bounds.center + Direction + ledgeDetectionOffset;
+
+        isOnLedge = Vector3.Distance(transform.position + HalfVector.HalfUp + HalfVector.HalfForward
+            //* (_Controller.bounds.size.y + 2.0f)
+            , ClosestLedgePoint.position) < 1 && !_isGrounded;
+
     }
 
-    private void LedgeCheck(ControllerColliderHit hit)
+    private void UpdateLedgeCheck(ControllerColliderHit hit)
     {
         if (hit.normal.y < 0.1f && !_isOnLedge)
         {
             //Debug.Log("Wall Hit");
-            ledgeDetectionPoint = new Vector3(transform.position.x, hit.collider.bounds.size.y + hit.transform.position.y, transform.position.z);
-            ClosestLedgePoint.position = new Vector3(transform.position.x, hit.collider.bounds.size.y + hit.transform.position.y, transform.position.z);
+            ledgeDetectionPoint = new Vector3(transform.position.x,
+                hit.collider.bounds.size.y + hit.transform.position.y, 
+                transform.position.z);
+            ClosestLedgePoint.position = new Vector3(transform.position.x, 
+                hit.collider.bounds.max.y, 
+                transform.position.z);
             ClosestLedgePoint.rotation = transform.rotation;
+            UpdateLedgeDetection();
+            LedgeGetupPoint.localPosition = HalfVector.HalfUp + HalfVector.SesquiForward;
         }
     }
 
-  //  private ControllerColliderHit Wall_Hit;
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-     //   Wall_Hit = hit;
         WallJumpDirection = hit.normal;
-     //   Debug.Log(WallJumpDirection);
         _isOnWall = !_isGrounded && hit.normal.y < 0.1f;
 
-        ClosestLedgePoint.position = hit.collider.ClosestPoint(ledgeDetectionPoint);
-
-        LedgeCheck(hit);
-
-        float distance = Vector3.Distance(ledgeDetectionPoint, ClosestLedgePoint.position);
-
-        /*        if (distance <= ledgeDetectionSize)
-                {
-                    _isOnLedge = true;
-                }
-        */
-
-        isOnLedge = Vector3.Distance(transform.position + Vector3.up * (_Controller.bounds.size.y + 2.0f), ClosestLedgePoint.position) < 1 && !_isGrounded;
-
-
-        //ClosestLedgePoint = hit.point + Vector3.one * hit.collider.bounds.max.y;
-        //new Vector3(hit.point.x, hit., hit.point.z); 
-        // _nearClimbableLedge = LedgeCheck(hit, hit.normal.y > 0.5f && !_isGrounded); 
-        // ; 
-    }
-    /*    private void UpdateWallCheckLocation()
+        if (!(hit.collider is MeshCollider))
         {
-            ///Character bounds center is around the center of the character controller
-            ///Direction is the MoveDireciton the player set to 1 and is forced up on the y
-            ///because that's the current movement velocity 
-            ///Then it's placed .5 forward and .5 up to just in front of where the player would normal deem visible
-            Vector3 Direction = MoveDirection;
-            Direction.Scale(Vector3.one);
-            WallDetector = _Controller.bounds.center + Direction.normalized + Vector3.up;
+            UpdateLedgeCheck(hit);
 
-        }*/
+           // float distance = Vector3.Distance(ledgeDetectionPoint, ClosestLedgePoint.position);
+        }
+    }
 
     private void GroundCheck()
     {
@@ -205,19 +185,9 @@ public class PlayerMovement : MonoBehaviour
             if (_isJumping)
                 VerticleVelocity = JumpForce;
 
-            
-            if (_isJumping && _JumpTimeoutDelta <= 0.0f)
-            {
-                /*     MoveDirection.y += (VerticleVelocity * JumpForce * 0.2f +
-                                                      (gravity / 2) * Mathf.Pow(0.1f, 2)) / MovementSpeed;
-                */
-                 //VerticleVelocity += gravity * 0.2f * JumpForce * Time.deltaTime;
-            }
-            
-
             else if (_Launching)
             {
-                VerticleVelocity += Mathf.SmoothDamp(2.0f, transform.position.y + 3.5f, ref VerticleVelocity, 2.0f);
+                VerticleVelocity = JumpForce * 2.0f;
                 _Launching = false;
             }
 
@@ -228,18 +198,19 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        else if (_isOnLedge)
-        {
-            MoveDirection = Vector3.zero; 
-        }
-
         //Falling
         else
         {
             // reset the jump timeout timer
             _JumpTimeoutDelta = 0.10f;
-            //MoveDirection.y -= gravity * Time.deltaTime;
-            VerticleVelocity = !_isHovering ? VerticleVelocity - gravity * Time.deltaTime * JumpForce : 0; 
+            if(isOnLedge)
+            {
+                VerticleVelocity = 0;
+                return; 
+            }
+
+            VerticleVelocity = !_isHovering ?
+                VerticleVelocity - gravity * Time.deltaTime * JumpForce : 0;
 
             // fall timeout
             if (_FallTimeoutDelta >= 0.0f)
@@ -292,21 +263,6 @@ public class PlayerMovement : MonoBehaviour
         LastMove = MoveDirection;
     }
 
-/*    public void CalculateMovement(Vector3 InputForMovementAngle)
-    {
-        targetAngle = Mathf.Atan2(MovementAngle.x, MovementAngle.z) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
-        //Calculating the forward angle by using the tangent of the Camera y-axis 
-        angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, _turnSmoothTime);
-        //Smoothing the angle 
-        transform.rotation = Quaternion.Euler(0f, angle, 0f);
-        //Rotates the character towards the smoothed angle 
-        MoveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-
-        MovementAngle = new Vector3(InputForMovementAngle.x, 0, InputForMovementAngle.y);
-        Vector3 NormalizedMovement = MovementAngle.normalized;
-        MovementAngle = NormalizedMovement;
-    }*/
-
     public void GetUpFromLedge()
     {
         if (_isOnLedge)
@@ -324,76 +280,15 @@ public class PlayerMovement : MonoBehaviour
             GroundPoint.transform.position.y - GroundedOffset, GroundPoint.transform.position.z),
             GroundedOffset);
 
-        //Draw Wall Detection
+
         Gizmos.color = Color.cyan;
-      //  Gizmos.DrawWireCube(WallDetector, HalfVector.Half);
-      
-        //Ledge Detection
-        //Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(ledgeDetectionPoint, 0.25f);
-        Gizmos.DrawWireSphere(ClosestLedgePoint.position, 0.25f);
-        Gizmos.DrawWireSphere(LedgeGetupPoint.position, 0.25f); 
-    }
+        
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(ClosestLedgePoint.position, 0.5f);
 
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(LedgeGetupPoint.position, 0.5f); 
+    }
 #endif
-}
-
-
-public class TesterMovement : MonoBehaviour
-{
-    Vector3 moveVector;
-    Vector3 lastMove;
-    float speed = 8f;
-    float jf = 8;
-    float grav = 25;
-    float VV;
-    CharacterController CC;
-
-
-    private void Start()
-    {
-        CC = GetComponent<CharacterController>();
-    }
-
-    private void Update()
-    {
-        moveVector = Vector3.zero;
-        moveVector.x = Input.GetAxisRaw("Horizontal");
-        moveVector.z = Input.GetAxisRaw("Vertical");
-
-        if (CC.isGrounded)
-        {
-            VV = -1;
-
-            if (Input.GetKeyDown(KeyCode.H))
-            {
-                VV = jf;
-            }
-        }
-        else
-        {
-            VV -= grav * Time.deltaTime;
-            moveVector = lastMove;
-        }
-
-        moveVector.y = 0;
-        moveVector.Normalize();
-        moveVector *= speed;
-        moveVector.y = VV;
-
-        CC.Move(moveVector * Time.deltaTime);
-        lastMove = moveVector;
-    }
-
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        if (!CC.isGrounded && hit.normal.y < 0.1f)
-        {
-            if (Input.GetKeyDown(KeyCode.H))
-            {
-                VV = jf;
-                moveVector = hit.normal * speed;
-            }
-        }
-    }
 }

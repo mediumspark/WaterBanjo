@@ -10,11 +10,11 @@ public class SaveLoadUtility : MonoBehaviour
 
     private void Awake()
     {
-        SceneManager.sceneLoaded += SceneManager_sceneLoaded;
+        SceneManager.sceneLoaded += LevelLoad;
     }
 
-
-    private void SceneManager_sceneLoaded(Scene arg, LoadSceneMode arg0)
+/*
+    private void InnitialSceneLoad(Scene arg, LoadSceneMode arg0)
     {
         GetComponentInChildren<Animator>().Play("LevelLoaded");
 
@@ -27,18 +27,18 @@ public class SaveLoadUtility : MonoBehaviour
             if (SaveLoadObjects.Length > 1) Destroy(SaveLoadObjects[0].gameObject);
         }
     }
-
-    private void ForLoadPipe(Scene arg, LoadSceneMode arg0) 
+*/
+    private void LevelLoad(Scene arg, LoadSceneMode arg0) 
     {
         GetComponentInChildren<Animator>().Play("LevelLoaded");
         GetComponent<PlayerScriptableReference>().SavePlace();
 
         LevelScriptableReference _LSR = FindObjectOfType<LevelScriptableReference>();
-        if(_LSR != null && _LSR.IsHubLevel)
+        if(_LSR != null && arg.buildIndex > 0)//&& _LSR.IsHubLevel)
         {
-            PlayerControls.TeleportPlayer(_LSR.HubSpawnLocation);
+            PlayerControls.TeleportPlayer(_LSR.StartLocation);
             Vector3 Place = PlayerControls.PlayerMovement.transform.position;
-            SavePlace(PlayerScriptableReference.PlayerSO, SceneManager.GetActiveScene(), Place);
+            SavePlace(PlayerScriptableReference.Instance.PlayerSO, SceneManager.GetActiveScene(), Place);
         }
 
         if (arg.buildIndex == 0)
@@ -47,21 +47,20 @@ public class SaveLoadUtility : MonoBehaviour
             if (SaveLoadObjects.Length > 1) Destroy(SaveLoadObjects[0].gameObject);
         }
 
-        SceneManager.sceneLoaded += SceneManager_sceneLoaded;
     }
 
 
     public void LoadFromPipe()
     {
-        SceneManager.sceneLoaded -= SceneManager_sceneLoaded;
-        SceneManager.sceneLoaded += ForLoadPipe; 
+//        SceneManager.sceneLoaded -= InnitialSceneLoad;
+    //    SceneManager.sceneLoaded += LevelLoad; 
     }
 
 
     public void NewGame(Player CurrentSlot)
     {
         CurrentSlot.Reset();
-        PlayerScriptableReference.PlayerSO = CurrentSlot; 
+        PlayerScriptableReference.Instance.PlayerSO = CurrentSlot; 
         SceneManager.LoadScene(1);
     }
 

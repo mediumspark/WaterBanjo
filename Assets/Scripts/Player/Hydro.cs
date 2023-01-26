@@ -50,11 +50,11 @@ public class Hydro : MonoBehaviour
 
     private void Awake()
     {
-        Nozzles = PlayerScriptableReference.PlayerSO.Nozzles;
+        Nozzles = PlayerScriptableReference.Instance.PlayerSO.Nozzles;
         PlayerControls.PlayerHydro = this;
         HydroLevel = _hydroLevel;
         //Activation of Set MoistureLevel property without trying to change the moisture level  
-        PlayerScriptableReference.PlayerSO.MoistureLevel = PlayerScriptableReference.PlayerSO.MoistureLevel;
+        PlayerScriptableReference.Instance.PlayerSO.MoistureLevel = PlayerScriptableReference.Instance.PlayerSO.MoistureLevel;
         animations = GetComponent<PlayerAnimations>(); 
 
         foreach (Nozzle go in Nozzles)
@@ -82,7 +82,7 @@ public class Hydro : MonoBehaviour
 
     public void NozzleEffect()
     {
-        CurrentNozzle.SetActive(!inFillRangeOfWell() && PlayerScriptableReference.PlayerSO.MoistureLevel > 1 && nozzleOn);
+        CurrentNozzle.SetActive(!inFillRangeOfWell() && PlayerScriptableReference.Instance.PlayerSO.MoistureLevel > 1 && nozzleOn);
     }
 
     private bool AttackNozzle()
@@ -109,9 +109,9 @@ public class Hydro : MonoBehaviour
     private void CalculateHoverWalk(float HoverCost)
     {
         PlayerMovement Player = GetComponent<PlayerMovement>(); 
-        float x = PlayerScriptableReference.PlayerSO.MoistureLevel;
+        float x = PlayerScriptableReference.Instance.PlayerSO.MoistureLevel;
         x = x - HoverCost >= 0 ? x - HoverCost : x;
-        PlayerScriptableReference.PlayerSO.MoistureLevel = x;
+        PlayerScriptableReference.Instance.PlayerSO.MoistureLevel = x;
         PlayerCanvas.UpdateUI();
         if(x - HoverCost < 0)
         {
@@ -131,9 +131,9 @@ public class Hydro : MonoBehaviour
 
     private void Spray()
     {
-        float x = PlayerScriptableReference.PlayerSO.MoistureLevel;
+        float x = PlayerScriptableReference.Instance.PlayerSO.MoistureLevel;
         x = x - Nozzles[NozzleIndex].MoistureCost >= 0 ? x - Nozzles[NozzleIndex].MoistureCost : x;
-        PlayerScriptableReference.PlayerSO.MoistureLevel = x;
+        PlayerScriptableReference.Instance.PlayerSO.MoistureLevel = x;
         PlayerCanvas.UpdateUI();
 
         if (AttackNozzle() && inFillRangeOfWell())
@@ -144,8 +144,8 @@ public class Hydro : MonoBehaviour
 
     private bool SprayBool(bool SprayPress)
     {
-        return nozzleOn && PlayerScriptableReference.PlayerSO.MoistureLevel > Nozzles[NozzleIndex].MoistureCost
-             && PlayerScriptableReference.PlayerSO.MoistureLevel > 0 && SprayPress;
+        return nozzleOn && PlayerScriptableReference.Instance.PlayerSO.MoistureLevel > Nozzles[NozzleIndex].MoistureCost
+             && PlayerScriptableReference.Instance.PlayerSO.MoistureLevel > 0 && SprayPress;
     }
 
     public void NozzleIndexUp()

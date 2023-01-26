@@ -9,13 +9,13 @@ public class Moisture : MonoBehaviour, ICollectable
 {
     public void OnCollect()
     {
-        PlayerScriptableReference.PlayerSO.AddMoisture(PlayerScriptableReference.PlayerSO.MoistureMax * 0.1f); 
+        PlayerScriptableReference.Instance.PlayerSO.AddMoisture(PlayerScriptableReference.Instance.PlayerSO.MoistureMax * 0.1f); 
         StartCoroutine(Refresh());
     }
 
     private IEnumerator Refresh()
     {
-        if (PlayerScriptableReference.PlayerSO.MoistureLevel < PlayerScriptableReference.PlayerSO.MoistureMax)
+        if (PlayerScriptableReference.Instance.PlayerSO.MoistureLevel < PlayerScriptableReference.Instance.PlayerSO.MoistureMax)
         {
             gameObject.GetComponent<MeshRenderer>().enabled = false;
             gameObject.GetComponent<Collider>().enabled = false;
